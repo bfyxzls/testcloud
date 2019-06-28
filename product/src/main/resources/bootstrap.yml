@@ -7,4 +7,4 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://${eureka.host:localhost}:${eureka.port:6761}/eureka/ #没有配置就使用默认值
+      defaultZone: http://localhost:6761/eureka/,http://localhost:5761/eureka/ #没有配置就使用默认值
