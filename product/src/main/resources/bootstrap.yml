@@ -1,0 +1,10 @@
+server.port: 8001
+
+spring:
+  application:
+    name: product
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:6761}/eureka/ #没有配置就使用默认值
