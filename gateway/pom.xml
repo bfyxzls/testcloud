@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.example</groupId>
-	<artifactId>product</artifactId>
+	<groupId>com.gateway</groupId>
+	<artifactId>gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>gateway</name>
 	<description>Demo project for Spring Boot</description>
-	
-	<repositories><!-- 代码库 -->
+
+   <repositories><!-- 代码库 -->
 		<repository>
 			<id>maven-ali</id>
 			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
@@ -46,11 +46,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -59,11 +54,13 @@
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-feign</artifactId>
+			<artifactId>spring-cloud-starter-zuul</artifactId>
 		</dependency>
+
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-hystrix</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

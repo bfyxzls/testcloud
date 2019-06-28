@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: gateway
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+server:
+  port: 8003
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:6761}/eureka/,http://${eureka.host:localhost}:${eureka.port:5761}/eureka/  #没有配置就使用默认值
+
+zuul:
+  routes:
+    uaa:
+      path: /user/**
+      sensitiveHeaders: "*"
+      serviceId: user
+    order:
+      path: /product/**
+      sensitiveHeaders: "*"
+      serviceId: product
+  add-proxy-headers: true
