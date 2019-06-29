@@ -4,7 +4,7 @@ target/
 !**/src/main/**
 !**/src/test/**
 .DS_Store
-Docker/jar/**.jar
+D|docker/jar/**.jar
 
 ### STS ###
 .apt_generated
