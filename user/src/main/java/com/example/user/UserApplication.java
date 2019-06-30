@@ -1,6 +1,7 @@
 package com.example.user;
 
 import com.example.user.feign.ProductClient;
+import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,4 +30,10 @@ public class UserApplication {
     stringBuffer.append(productClient.index());
     return stringBuffer.toString();
   }
+
+  @GetMapping("/user")
+  public Principal user(Principal user) {
+    return user;
+  }
+
 }

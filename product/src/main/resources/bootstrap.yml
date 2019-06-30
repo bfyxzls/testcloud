@@ -16,3 +16,14 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:6761/eureka/,http://localhost:5761/eureka/ #没有配置就使用默认值
+
+security:
+  oauth2:
+    resource:
+      id: account-service
+      user-info-uri: http://${auth.host:localhost}:${auth.port:8002}/user # 这里是授权服务的地址，即auth-service
+      prefer-token-info: false
+
+auth:
+  host: user #这个不可以用eureka里的服务名，只能使用docker-compose里的服务名
+  port: 8002

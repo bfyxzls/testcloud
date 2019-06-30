@@ -15,7 +15,7 @@ eureka:
 zuul:
   routes:
     uaa:
-      path: /user/**
+      path: /uaa/**
       sensitiveHeaders: "*"
       serviceId: user
     order:
@@ -23,3 +23,13 @@ zuul:
       sensitiveHeaders: "*"
       serviceId: product
   add-proxy-headers: true
+
+security:
+  oauth2:
+    client:
+      access-token-uri: http://${spring.application.name}:${server.port}/uaa/oauth/token
+      user-authorization-uri: http://${spring.application.name}:${server.port}/uaa/oauth/authorize
+      client-id: webapp
+    resource:
+      user-info-uri: http://${spring.application.name}:${server.port}/uaa/user
+      prefer-token-info: false
