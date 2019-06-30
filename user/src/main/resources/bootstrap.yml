@@ -4,6 +4,14 @@ spring:
   application:
     name: user
 
+feign:
+  hystrix:
+    enabled: true
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+
 eureka:
   client:
     service-url:
