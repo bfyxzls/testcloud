@@ -30,21 +30,18 @@ services:
       - NAME=eureka2
       - URL=http://eureka1:6761/eureka #集群地址配置
 
-  configserver:
-    build: ./config-server
+
+  Redis:
+    image: sameersbn/redis:latest
     ports:
-      - "6200:6200"
-      - "6201:6201"
-    networks:
-      - dev
-    depends_on:
-      - eurekaserver1 #依赖服务
-      - eurekaserver2
-    environment:
-      - PORT=6200
-      - BG_PORT=6201
+      - "6379:6379"
+    volumes:
+      - redis_data:/var/lib/redis
+    restart: always
 
 networks:
   dev:
     driver: bridge
 
+volumes:
+  redis_data:
