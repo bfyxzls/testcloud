@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
  */
 public class TokenContext {
   public static final String KEY_TOKEN_IN_HTTP_HEADER = "UserDetails";
-  public static final String KEY_OAUTH2_TOKEN = "Authorization";
 
   private static ThreadLocal<UserDetails> tokenLocal = new ThreadLocal<>();
 

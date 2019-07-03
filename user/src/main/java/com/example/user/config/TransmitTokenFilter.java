@@ -8,12 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 import org.springframework.stereotype.Component;
 
 /**
@@ -45,8 +42,7 @@ public class TransmitTokenFilter implements Filter {
    * @param request 请求参数
    */
   private void initToken(HttpServletRequest request) {
-    String tokenJson = request.getHeader(TokenContext.KEY_OAUTH2_TOKEN);
-    if (StringUtils.isNotBlank(tokenJson)) {
+    if (SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
       TokenContext.setToken((UserDetails) authentication.getPrincipal());
     }

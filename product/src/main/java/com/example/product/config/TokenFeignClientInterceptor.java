@@ -1,4 +1,4 @@
-package com.example.user.config;
+package com.example.product.config;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
@@ -16,7 +16,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 @Component
 public class TokenFeignClientInterceptor implements RequestInterceptor {
 
-  public static final String KEY_OAUTH2_TOKEN = "Authorization";
+  static final String KEY_OAUTH2_TOKEN = "Authorization";
 
   /**
    * token放在请求头.
