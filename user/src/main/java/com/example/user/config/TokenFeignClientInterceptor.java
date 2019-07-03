@@ -32,8 +32,8 @@ public class TokenFeignClientInterceptor implements RequestInterceptor {
     RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
     if (requestAttributes != null) {
       HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
-      String token = request.getHeader("Authorization");
-      requestTemplate.header("Authorization",
+      String token = request.getHeader(TokenContext.KEY_OAUTH2_TOKEN);
+      requestTemplate.header(TokenContext.KEY_OAUTH2_TOKEN,
           new String[] {token});
     }
   }
