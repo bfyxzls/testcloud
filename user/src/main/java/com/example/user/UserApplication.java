@@ -25,6 +25,7 @@ public class UserApplication {
 
   @GetMapping("/")
   public String index() {
+    String token = TokenContext.getToken();
     StringBuffer stringBuffer = new StringBuffer();
     stringBuffer.append("hello user");
     stringBuffer.append(productClient.index());

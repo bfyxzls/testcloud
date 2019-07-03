@@ -28,10 +28,10 @@ eureka:
 security:
   oauth2:
     resource:
-      id: account-service
+      id: user
       user-info-uri: http://${auth.host:localhost}:${auth.port:8002}/user # 这里是授权服务的地址，即auth-service
       prefer-token-info: false
 
 auth:
-  host: user #这个不可以用eureka里的服务名，只能使用docker-compose里的服务名
+  host: localhost  #这个不可以用eureka里的服务名，只能使用docker-compose里的服务名
   port: 8002
