@@ -40,15 +40,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         .userDetailsService(jpaUserDetailsService)//若无，refresh_token会有UserDetailsService is required错误
         .tokenStore(tokenStore());
 
-    // 配置TokenServices参数
-    DefaultTokenServices tokenServices = new DefaultTokenServices();
-    tokenServices.setTokenStore(endpoints.getTokenStore());
-    tokenServices.setSupportRefreshToken(false);
-    tokenServices.setClientDetailsService(endpoints.getClientDetailsService());
-    tokenServices.setTokenEnhancer(endpoints.getTokenEnhancer());
-    tokenServices.setAccessTokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(30)); // 30天
-    endpoints.tokenServices(tokenServices);
-
   }
 
   @Override
@@ -61,10 +52,17 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
   @Override
   public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
     clients.inMemory()
-        .withClient("client")
-        .secret("secret")
+        .withClient("android")
+        .scopes("xx")
+        .secret("android")
         .authorizedGrantTypes("password", "authorization_code", "refresh_token")
-        .scopes("api")
-        .autoApprove(true);
+        .and()
+        .withClient("webapp")
+        .scopes("xx")
+        .authorizedGrantTypes("implicit")
+        .and()
+        .withClient("browser")
+        .authorizedGrantTypes("refresh_token", "password")
+        .scopes("ui");
   }
 }

@@ -24,7 +24,7 @@ feign:
 security:
   oauth2:
     resource:
-      filter-order: 100
+      filter-order: 3
 
 hystrix.command.default.execution.isolation.strategy: SEMAPHORE #hystrix策略为thread时，threadlocal为空
 
