@@ -22,6 +22,9 @@ zuul:
       path: /product/**
       sensitiveHeaders: "*"
       serviceId: product
+    baidu:
+       path: /baidu/**
+       url: http://www.baidu.com
   add-proxy-headers: true
 
 security:
