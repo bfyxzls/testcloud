@@ -1,4 +1,4 @@
-package com.example.user.config;
+package com.gateway.gateway.config;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,13 +11,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class TokenContext {
   public static final String KEY_TOKEN_IN_HTTP_HEADER = "UserDetails";
 
-  private static ThreadLocal<UserDetails> tokenLocal = new ThreadLocal<>();
+  private static ThreadLocal<TokenData> tokenLocal = new ThreadLocal<>();
 
-  public static UserDetails getToken() {
+  public static TokenData getToken() {
     return tokenLocal.get();
   }
 
-  public static void setToken(UserDetails token) {
+  public static void setToken(TokenData token) {
     tokenLocal.set(token);
   }
 
@@ -25,5 +25,4 @@ public class TokenContext {
     tokenLocal.set(null);
     tokenLocal.remove();
   }
-
 }

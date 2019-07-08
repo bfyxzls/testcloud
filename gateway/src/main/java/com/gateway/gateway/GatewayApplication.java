@@ -1,5 +1,6 @@
 package com.gateway.gateway;
 
+import com.gateway.gateway.config.TokenContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -17,8 +18,14 @@ public class GatewayApplication {
     SpringApplication.run(GatewayApplication.class, args);
   }
 
-  @GetMapping("/")
+  @GetMapping("/index")
   public String index() {
-    return "hello gateway";
+    return "hello gateway" + TokenContext.getToken();
+  }
+
+
+  @GetMapping("/test")
+  public String way() {
+    return "hello way";
   }
 }
