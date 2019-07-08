@@ -8,6 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -28,5 +29,13 @@ public class ProductApplication {
     String user = objectMapper.writeValueAsString(authentication.getPrincipal());
     String s = "hello product " + user;
     return s;
+  }
+
+  @GetMapping("/add")
+  public String add(@RequestParam("param") String param) {
+    if (!param.equals("ok")) {
+      throw new RuntimeException("error");
+    }
+    return "ok";
   }
 }

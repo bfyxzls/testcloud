@@ -8,4 +8,9 @@ public class ProductClientFallback implements ProductClient {
   public String index() {
     return "product.error";
   }
+
+  @Override
+  public String add(String param) {
+    return null;
+  }
 }

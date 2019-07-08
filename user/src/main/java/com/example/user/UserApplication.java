@@ -41,6 +41,7 @@ public class UserApplication {
 
   @GetMapping("/test")
   public String test() {
+    productClient.add("zzl");
     return "test";
   }
 }
