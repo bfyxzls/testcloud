@@ -1,10 +1,12 @@
 package com.example.product;
 
+import com.example.product.exception.Exceptions;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,10 +34,10 @@ public class ProductApplication {
   }
 
   @GetMapping("/add")
-  public String add(@RequestParam("param") String param) {
+  public ResponseEntity<?> add(@RequestParam("param") String param) {
     if (!param.equals("ok")) {
-      throw new RuntimeException("error");
+      throw Exceptions.badRequestParams("error params");
     }
-    return "ok";
+    return ResponseUtils.ok("ok");
   }
 }

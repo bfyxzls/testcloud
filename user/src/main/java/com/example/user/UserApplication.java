@@ -10,6 +10,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -40,8 +41,9 @@ public class UserApplication {
   }
 
   @GetMapping("/test")
-  public String test() {
-    productClient.add("zzl");
-    return "test";
+  public String test(@RequestParam String name) {
+
+    String body = productClient.add(name);
+    return body;
   }
 }

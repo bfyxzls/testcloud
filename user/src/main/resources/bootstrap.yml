@@ -14,7 +14,7 @@ spring:
 
 feign:
   hystrix:
-    enabled: true #关闭熔断之后，服务端有异常将会被抛出来，如果开始后，异常会被消化
+    enabled: false #关闭熔断之后，服务端有异常将会被抛出来，如果开始后，异常会被消化
   httpclient:
     enabled: false
   okhttp:
