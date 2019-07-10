@@ -1,6 +1,5 @@
 package com.example.user.config;
 
-import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,17 +10,14 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 /**
- * Created by SuperS on 2017/9/25.
- *
- * @author SuperS
+ * OAuth授权中心.
  */
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
   @Autowired
   private AuthenticationManager authenticationManager;
   @Autowired
@@ -52,17 +48,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
   @Override
   public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
     clients.inMemory()
-        .withClient("android")
-        .scopes("xx")
-        .secret("android")
-        .authorizedGrantTypes("password", "authorization_code", "refresh_token")
-        .and()
         .withClient("webapp")
-        .scopes("xx")
-        .authorizedGrantTypes("implicit")
-        .and()
-        .withClient("browser")
-        .authorizedGrantTypes("refresh_token", "password")
-        .scopes("ui");
+        .scopes("read","write")
+        .autoApprove(true)
+        .authorities("admin","user")
+        .secret("webapp123")
+        .authorizedGrantTypes("password", "authorization_code", "refresh_token");
+
   }
 }

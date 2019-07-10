@@ -31,9 +31,8 @@ zuul:
 security:
   oauth2:
     client:
-      access-token-uri: http://${spring.application.name}:${server.port}/uaa/oauth/token
-      user-authorization-uri: http://${spring.application.name}:${server.port}/uaa/oauth/authorize
-      client-id: webapp
+      access-token-uri: http://${spring.application.name}:${server.port}/uaa/oauth/token #令牌获取
+      user-authorization-uri: http://${spring.application.name}:${server.port}/uaa/oauth/authorize #授权
     resource:
       user-info-uri: http://${spring.application.name}:${server.port}/uaa/user
       prefer-token-info: false

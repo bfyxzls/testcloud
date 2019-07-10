@@ -9,6 +9,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+/**
+ * 获取用户信息.
+ */
 @Service
 public class JPAUserDetailsService implements UserDetailsService {
   @Autowired
