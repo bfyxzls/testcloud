@@ -36,3 +36,7 @@ security:
     resource:
       user-info-uri: http://${spring.application.name}:${server.port}/uaa/user
       prefer-token-info: false
+
+logging:
+  config: classpath:log/logback.xml
+  path: ~/logger
