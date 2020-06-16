@@ -96,7 +96,7 @@
             <!-- ImmutableSet.of("e1", "e2"); -->
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>23.5-jre</version>
+            <version>24.1.1-jre</version>
         </dependency>
         <dependency>
             <!-- CollectionUtils.IsEmpty(); -->
